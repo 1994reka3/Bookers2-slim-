@@ -5,4 +5,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  scope module: :users do
+    resources :users, only: [:show, :edit, :update]
+  end
 end
