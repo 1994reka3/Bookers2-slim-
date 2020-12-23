@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   scope module: :users do
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update]
   end
 end
