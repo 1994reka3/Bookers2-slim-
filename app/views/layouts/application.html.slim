@@ -9,20 +9,37 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header
-      /ログイン時
-      - if user_signed_in?
-        = link_to " Home", user_path(current_user.id)
-        = link_to " Users", users_path
-        = link_to " Books", "#"
-        = link_to " logout", destroy_user_session_path, method: :delete
-      /未ログイン時
-      - else
-        = link_to " Home", root_path
-        = link_to " About", home_about_path
-        = link_to " sign up", new_user_registration_path
-        = link_to " login", new_user_session_path
+      nav.navbar.navbar-inverse
+        .container
+          nav.nav.navbar-nav.navbar-left
+            h4.site-logo
+              | Bookers2-slim-
+          nav
+            ul.nav.navbar-nav.navbar-right
+              /ログイン時
+              - if user_signed_in?
+                li
+                  = link_to " Home", user_path(current_user.id)
+                li
+                  = link_to " Users", users_path
+                li
+                  = link_to " Books", "#"
+                li
+                  = link_to " logout", destroy_user_session_path, method: :delete
+              /未ログイン時
+              - else
+                li
+                  = link_to " Home", root_path
+                li
+                  = link_to " About", home_about_path
+                li
+                  = link_to " sign up", new_user_registration_path
+                li
+                  = link_to " login", new_user_session_path
     main
-      = yield
+      .container
+        = yield
     footer
-      p
-        | CopyRight Infratop.inc
+      .container
+        p.text-right
+          | CopyRight Infratop.inc
