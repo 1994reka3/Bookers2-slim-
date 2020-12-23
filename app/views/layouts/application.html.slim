@@ -9,9 +9,20 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header
-      = link_to "Home", root_path
-      = link_to "About", home_about_path
-      = link_to "ログアウト", destroy_user_session_path, method: :delete
-    body
+      /ログイン時
+      - if user_signed_in?
+        = link_to " Home", user_path(current_user.id)
+        = link_to " Users", users_path
+        = link_to " Books", "#"
+        = link_to " logout", destroy_user_session_path, method: :delete
+      /未ログイン時
+      - else
+        = link_to " Home", root_path
+        = link_to " About", home_about_path
+        = link_to " sign up", new_user_registration_path
+        = link_to " login", new_user_session_path
+    main
       = yield
     footer
+      p
+        | CopyRight Infratop.inc
