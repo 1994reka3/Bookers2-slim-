@@ -8,4 +8,10 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    header
+      = link_to "Home", root_path
+      = link_to "About", home_about_path
+      = link_to "ログアウト", destroy_user_session_path, method: :delete
+    body
+      = yield
+    footer
