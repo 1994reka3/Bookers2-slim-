@@ -1,2 +1,19 @@
-h1 Users::マイページ
-p Find me in app/views/users/users/show.html.slim
+.row
+  .col-md-3
+    h2
+      | User info
+
+    = attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100"
+    table.table
+      tr
+        th
+          | name
+        th
+          = @user.name
+      tr
+        th
+          | introduction
+        th
+          = @user.introduction
+    = link_to edit_user_path(@user), class: "btn btn-default btn-block" do
+      = icon "fas", "user-edit"
