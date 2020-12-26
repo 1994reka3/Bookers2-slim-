@@ -17,3 +17,18 @@
           = @user.introduction
     = link_to edit_user_path(@user), class: "btn btn-default btn-block" do
       = icon "fas", "user-edit"
+
+    h2
+      | New book
+
+  .col-md-9
+    h2
+      | Books
+    table.table.table-hover
+      thead
+        tr
+          th
+            | Title
+          th
+            | Opinion
+      tbody
