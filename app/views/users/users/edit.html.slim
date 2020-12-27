@@ -1,5 +1,5 @@
 .row
-  .col-md-3
+  .col-md-12
     h2
       | User info
     - if @user.errors.any?
@@ -15,17 +15,17 @@
     = form_with(model: @user, local: true) do |f|
       form.form-horizontal
         .form-group
-          label.col-md-4.control-label.user-edit-form
+          label.col-md-3.control-label.user-edit-form
             | Name
-          .col-md-8.user-edit-form
+          .col-md-9.user-edit-form
             = f.text_field :name
-          label.col-md-4.control-label.user-edit-form
+          label.col-md-3.control-label.user-edit-form
             | Image
-          .col-md-8.user-edit-form
+          .col-md-9.user-edit-form
             = f.attachment_field :profile_image
-          label.col-md-4.control-label.user-edit-form
+          label.col-md-3.control-label.user-edit-form
             | Introduction
-          .col-md-8.user-edit-form
+          .col-md-9.user-edit-form
             = f.text_area :introduction
           .col-md-4.user-edit-form
             =f.submit "Update User"
