@@ -1,37 +1,8 @@
 .row
   .col-md-3
-    h2
-      | User info
+    = render "user_info", user: @user
 
-    = attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100"
-    table.table
-      tr
-        th
-          | name
-        th
-          = @user.name
-      tr
-        th
-          | introduction
-        th
-          = @user.introduction
-    = link_to edit_user_path(@user), class: "btn btn-default btn-block" do
-      = icon "fas", "user-edit"
-
-    h2
-      | New book
-    = form_with(model: @book, local: true, url: "/books") do |f|
-      .new-book-form
-        = f.label :title
-        br
-        = f.text_field :title, autofocus: true, autocomplete: "title", class: "form-control"
-      .new-book-form
-        = f.label :opinion
-        br
-        = f.text_area :body, autofocus: true, autocomplete: "body", rows: 5, class: "form-control"
-      .new-book-form
-        = f.submit "Create Book", class: "btn btn-primary btn-block"
-
+    = render "books/new_book", book: @book
 
   .col-md-9
     h2

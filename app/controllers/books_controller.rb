@@ -18,6 +18,8 @@ class BooksController < ApplicationController
   end
 
   def show
+    @user = @book.user
+    @newbook = Book.new
   end
 
   def edit
