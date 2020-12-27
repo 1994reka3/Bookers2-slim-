@@ -20,6 +20,18 @@
 
     h2
       | New book
+    = form_with(model: @book, local: true, url: "/books") do |f|
+      .new-book-form
+        = f.label :title
+        br
+        = f.text_field :title, autofocus: true, autocomplete: "title", class: "form-control"
+      .new-book-form
+        = f.label :opinion
+        br
+        = f.text_area :body, autofocus: true, autocomplete: "body", rows: 5, class: "form-control"
+      .new-book-form
+        = f.submit "Create Book", class: "btn btn-primary btn-block"
+
 
   .col-md-9
     h2
