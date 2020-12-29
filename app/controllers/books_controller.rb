@@ -4,8 +4,9 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
+    @user = current_user
     @books = Book.all
-    @book = Book.new
+    @newbook = Book.new
   end
 
   def create
