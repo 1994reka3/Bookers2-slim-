@@ -23,6 +23,6 @@
                 = attachment_image_tag book.user, :profile_image, size: "60x60", format: 'jpeg', fallback: "no_image.jpg"
                 br
             td
-              = book.title
+              = link_to book.title, book_path(book)
             td
               = book.body
