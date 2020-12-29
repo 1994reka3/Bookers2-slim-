@@ -4,8 +4,9 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
+    @user = current_user
     @books = Book.all
-    @book = Book.new
+    @newbook = Book.new
   end
 
   def create
@@ -23,6 +24,19 @@ class BooksController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @book.update(book_params)
+      redirect_to book_path(@book)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @book.destroy
+    redirect_to books_path
   end
 
   private
