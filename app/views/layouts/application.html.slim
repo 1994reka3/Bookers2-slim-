@@ -38,6 +38,9 @@ html
                   = link_to " login", new_user_session_path
     main
       .container
+        - if flash[:notice]
+          p.success-message
+            = flash[:notice]
         = yield
     footer
       .container
