@@ -4,6 +4,8 @@ class Users::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   def index
     @users = User.all
+    @user = current_user
+    @newbook = Book.new
   end
 
   def show
