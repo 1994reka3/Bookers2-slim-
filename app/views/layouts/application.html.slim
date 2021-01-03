@@ -19,23 +19,39 @@ html
               /ログイン時
               - if user_signed_in?
                 li
-                  = link_to " Home", user_path(current_user.id)
+                  = link_to user_path(current_user.id) do
+                    span.glyphicon.glyphicon-home aria-hidden="true"
+                    | 　Home
                 li
-                  = link_to " Users", users_path
+                  = link_to users_path do
+                    span.glyphicon.glyphicon-user aria-hidden="true"
+                    | 　Users
                 li
-                  = link_to " Books", books_path
+                  = link_to books_path do
+                    span.glyphicon.glyphicon-book aria-hidden="true"
+                    | 　Books
                 li
-                  = link_to " logout", destroy_user_session_path, method: :delete
+                  = link_to destroy_user_session_path, method: :delete do
+                    span.glyphicon.glyphicon-log-out aria-hidden="true"
+                    | 　logout
               /未ログイン時
               - else
                 li
-                  = link_to " Home", root_path
+                  = link_to root_path do
+                    span.glyphicon.glyphicon-home aria-hidden="true"
+                    | 　Home
                 li
-                  = link_to " About", home_about_path
+                  = link_to home_about_path do
+                    span.glyphicon.glyphicon-link aria-hidden="true"
+                    | 　About
                 li
-                  = link_to " sign up", new_user_registration_path
+                  = link_to new_user_registration_path do
+                    span.glyphicon.glyphicon-edit aria-hidden="true"
+                    | 　sign up
                 li
-                  = link_to " login", new_user_session_path
+                  = link_to new_user_session_path do
+                    span.glyphicon.glyphicon-log-in aria-hidden="true"
+                    | 　login
     main
       .container
         - if flash[:notice]
