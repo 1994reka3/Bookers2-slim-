@@ -1,4 +1,13 @@
 .row
+  - if @newbook.errors.any?
+    #error_explanation
+      h3
+        = pluralize(@newbook.errors.count, "error")
+        | prohibited this obj from being saved:
+      ul
+        - @newbook.errors.full_messages.each do |message|
+          li
+            = message
   .col-md-3
     = render "user_info", user: @user
 
