@@ -27,6 +27,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+    redirect_to books_path if @book.user.id != current_user.id
   end
 
   def update
