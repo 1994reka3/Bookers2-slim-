@@ -10,11 +10,13 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = current_user.books.new(book_params)
-    if @book.save
+    @user = current_user
+    @newbook = current_user.books.new(book_params)
+    if @newbook.save
       flash[:notice] = "You have created book successfully."
-      redirect_to book_path(@book)
+      redirect_to book_path(@newbook)
     else
+      @books = Book.all
       render :index
     end
   end
