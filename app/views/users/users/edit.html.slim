@@ -2,17 +2,17 @@
   .col-md-12
     h2
       | User info
-    - if @user.errors.any?
-      #error_explanation
-        h3
-          = pluralize(@user.errors.count, "error")
-          | prohibited this obj from being saved:
-        ul
-          - @user.errors.full_messages.each do |message|
-            li
-              = message
 
     = form_with(model: @user, local: true) do |f|
+      - if @user.errors.any?
+        #error_explanation
+          h3
+            = pluralize(@user.errors.count, "error")
+            |  prohibited this obj from being saved:
+          ul
+            - @user.errors.full_messages.each do |message|
+              li
+                = message
       form.form-horizontal
         .form-group
           label.col-md-3.control-label.user-edit-form

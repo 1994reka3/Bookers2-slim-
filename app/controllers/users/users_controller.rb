@@ -15,11 +15,13 @@ class Users::UsersController < ApplicationController
   end
 
   def edit
+    redirect_to user_path(current_user.id) if @user.id != current_user.id
   end
 
   def update
     if @user.update(user_params)
       redirect_to user_path(@user)
+      flash[:notice] = "You have updated user_info successfully."
     else
       render :edit
     end
