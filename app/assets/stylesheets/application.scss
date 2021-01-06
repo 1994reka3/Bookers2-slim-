@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
+//////ヘッダー
+.site-logo {
+  color: #fff;
+}
+
+//////topページ
+.top-line {
+  line-height: 2em;
+  margin: 20px 0;
+}
+
+//////エラーメッセージ
+#error_explanation {
+  color: red;
+}
+
+//////サクセスメッセージ
+.success-message {
+  color: green;
+}
+
+////// New book
+.new-book-form {
+  margin: 10px 0;
+}
+//////ユーザー編集
+.user-edit-form {
+  margin-bottom: 20px;
+}

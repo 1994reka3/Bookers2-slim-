@@ -8,4 +8,57 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    header
+      nav.navbar.navbar-inverse
+        .container
+          nav.nav.navbar-nav.navbar-left
+            h4.site-logo
+              | Bookers2-slim-
+          nav
+            ul.nav.navbar-nav.navbar-right
+              /ログイン時
+              - if user_signed_in?
+                li
+                  = link_to user_path(current_user.id) do
+                    span.glyphicon.glyphicon-home aria-hidden="true"
+                    | 　Home
+                li
+                  = link_to users_path do
+                    span.glyphicon.glyphicon-user aria-hidden="true"
+                    | 　Users
+                li
+                  = link_to books_path do
+                    span.glyphicon.glyphicon-book aria-hidden="true"
+                    | 　Books
+                li
+                  = link_to destroy_user_session_path, method: :delete do
+                    span.glyphicon.glyphicon-log-out aria-hidden="true"
+                    | 　logout
+              /未ログイン時
+              - else
+                li
+                  = link_to root_path do
+                    span.glyphicon.glyphicon-home aria-hidden="true"
+                    | 　Home
+                li
+                  = link_to home_about_path do
+                    span.glyphicon.glyphicon-link aria-hidden="true"
+                    | 　About
+                li
+                  = link_to new_user_registration_path do
+                    span.glyphicon.glyphicon-edit aria-hidden="true"
+                    | 　sign up
+                li
+                  = link_to new_user_session_path do
+                    span.glyphicon.glyphicon-log-in aria-hidden="true"
+                    | 　login
+    main
+      .container
+        - if flash[:notice]
+          p.success-message
+            = flash[:notice]
+        = yield
+    footer
+      .container
+        p.text-right
+          | CopyRight Infratop.inc
